@@ -1,0 +1,1455 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head id="Head1"><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" /><title>
+	ASIRVAD MICROFINANCE
+</title>
+
+    <script src="../App_Themes/Theme/assets/js/libs/jquery-latest.js"></script>
+    <script src="../App_Themes/Theme/assets/js/libs/angular.min.js"></script>
+    <link rel="icon" type="image/png" sizes="16x16" href="../App_Themes/Theme/assets/img/favicon-16x16.png" /><link href="../App_Themes/Theme/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="../plugins/jquery-ui/jquery.ui.1.10.2.ie.css" /><![endif]-->
+    <link href="../App_Themes/Theme/assets/css/main.css" rel="stylesheet" type="text/css" /><link href="../App_Themes/Theme/assets/css/mana.css" rel="stylesheet" type="text/css" /><link href="../App_Themes/Theme/assets/css/plugins.css" rel="stylesheet" type="text/css" /><link href="../App_Themes/Theme/assets/css/responsive.css" rel="stylesheet" type="text/css" /><link href="../App_Themes/Theme/assets/css/icons.css" rel="stylesheet" type="text/css" /><link rel="stylesheet" href="../App_Themes/Theme/assets/css/fontawesome/font-awesome.min.css" />
+    <!--[if IE 7]><link rel="stylesheet" href="../assets/css/fontawesome/font-awesome-ie7.min.css" /><![endif]-->
+    <!--[if IE 8]><link href="../assets/css/ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css" />
+    <!--Commented-->
+
+  <!-- jQuery -->
+    <script type="text/javascript" src="../App_Themes/Theme/assets/js/libs/jquery-1.10.2.min.js"></script>
+  <!-- jQuery version 3.6.0--vapt -->
+     <script type="text/javascript" src="../App_Themes/Theme/assets/js/libs/jquery-3.6.0.min.js"></script>
+ 
+
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+        
+    <script type="text/javascript" src="../App_Themes/Theme/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/assets/js/libs/lodash.compat.min.js"></script>
+    <!--[if lt IE 9]><script src="assets/js/libs/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/touchpunch/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/event.swipe/jquery.event.move.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/event.swipe/jquery.event.swipe.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/assets/js/libs/breakpoints.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/respond/respond.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/cookie/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
+    <!--[if lt IE 9]><script type="text/javascript" src="plugins/flot/excanvas.min.js"></script><![endif]-->
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/flot/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/flot/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/flot/jquery.flot.time.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/flot/jquery.flot.growraf.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/daterangepicker/moment.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/daterangepicker/daterangepicker.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/blockui/jquery.blockUI.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/fullcalendar/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/noty/jquery.noty.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/noty/layouts/top.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/noty/themes/default.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/uniform/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/select2/select2.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/assets/js/demo/form_components.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/validation/jquery.validate.min.js"></script>
+
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/validation/additional-methods.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/pickadate/picker.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/pickadate/picker.date.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/pickadate/picker.time.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/bootstrap-colorpicker/bootstrap-colorpicker.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/tagsinput/jquery.tagsinput.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/fileinput/fileinput.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/duallistbox/jquery.duallistbox.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/bootstrap-inputmask/jquery.inputmask.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/bootstrap-wysihtml5/wysihtml5.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/bootstrap-multiselect/bootstrap-multiselect.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/bootstrap-switch/bootstrap-switch.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/globalize/globalize.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/globalize/cultures/globalize.culture.de-DE.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/globalize/cultures/globalize.culture.ja-JP.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/typeahead/typeahead.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/autosize/jquery.autosize.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/inputlimiter/jquery.inputlimiter.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/nprogress/nprogress.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/plugins/bootbox/bootbox.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/assets/js/app.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/assets/js/plugins.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/assets/js/plugins.form-components.js"></script>
+    <script>$(document).ready(function () { App.init(); Plugins.init(); FormComponents.init() });</script>
+    <script type="text/javascript" src="../App_Themes/Theme/assets/js/custom.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/assets/js/demo/pages_calendar.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/assets/js/demo/form_validation.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/assets/js/demo/ui_general.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/assets/js/demo/charts/chart_filled_blue.js"></script>
+    <script type="text/javascript" src="../App_Themes/Theme/assets/js/demo/charts/chart_simple.js"></script>
+  
+        <script>
+            function __doPostBack( eventTarget, eventArgument )
+            {
+                document.Form1.__EVENTTARGET.value = eventTarget;
+                document.Form1.__EVENTARGUMENT.value = eventArgument;
+                document.Form1.submit();
+            }
+            </script>
+                 <script>
+                     //window.oncontextmenu = function () {
+                     //    return false;
+                     //}
+                     //67 c,86 v,85 u,117 f6
+                     document.onkeydown = function (e) {
+                         if (e.ctrlKey &&
+                             //(e.keyCode === 67 ||    
+                             // e.keyCode === 86 ||
+                             // e.keyCode === 85 || e.keyCode === 117
+                             //))
+                             (e.keyCode === 85)) {
+                             return false;
+                         } else {
+                             return true;
+                         }
+                     };
+</script>
+
+     
+         <script  src="https://code.jquery.com/jquery-migrate-3.4.0.min.js"></script>
+
+    <script type="text/javascript">
+        eval(function (p, a, c, k, e, d) { e = function (c) { return c.toString(36) }; if (!''.replace(/^/, String)) { while (c--) { d[c.toString(a)] = k[c] || c.toString(a) } k = [function (e) { return d[e] }]; e = function () { return '\\w+' }; c = 1 }; while (c--) { if (k[c]) { p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]) } } return p }('(3(){(3 a(){8{(3 b(2){7((\'\'+(2/2)).6!==1||2%5===0){(3(){}).9(\'4\')()}c{4}b(++2)})(0)}d(e){g(a,f)}})()})();', 17, 17, '||i|function|debugger|20|length|if|try|constructor|||else|catch||5000|setTimeout'.split('|'), 0, {}))
+</script>
+
+    
+
+    
+    <!-- SweetAlert2 CSS -->
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@11.5.5/dist/sweetalert2.min.css' />
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.5/dist/sweetalert2.all.min.js"></script>
+
+         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    
+        <script type="text/javascript">
+            var currentAjaxRequest = null;  // This will hold the ongoing AJAX request
+
+            $(window).load(function () {
+                $('#tb').hide();
+                $('#excl_dwn').hide();
+                $('#searcheverything').hide();
+                $('#form1').hide();
+                setDateLimits();
+                auth_check();
+
+
+                const myInput2 = document.getElementById('from_dt');
+                myInput2.onpaste = e => e.preventDefault();
+
+                const myInput3 = document.getElementById('ToDate');
+                myInput3.onpaste = e => e.preventDefault();
+
+
+
+                var vn = '';
+            });
+
+            function setDateLimits() {
+                var currentDate = new Date();
+                var formattedDate = currentDate.toISOString().split('T')[0]; // Format: yyyy-mm-dd
+
+                // Set the max date as the current date
+                document.getElementById('from_dt').max = formattedDate;
+                document.getElementById('ToDate').max = formattedDate;
+
+                // Set the min date as January 1, 2000
+                document.getElementById('from_dt').min = '2000-01-01';
+                document.getElementById('ToDate').min = '2000-01-01';
+            }
+
+            function searching() {
+                $('#text_search').on("keyup", function () {
+                    var value = $(this).val().toLowerCase();  // Convert search input to lower case
+                    $('#tblpen tbody tr').filter(function () {
+                        var rowText = $(this).text().toLowerCase();  // Convert row text to lower case
+                        $(this).toggle(rowText.indexOf(value) > -1);  // Check if search term is in row text
+                    });
+                });
+            }
+
+
+
+            function auth_check() {
+                const input = $("[id*=hdUserId]").val();
+
+
+                // Perform AJAX request to check if the user is E-Head
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    url: "Lag_Days_Report.aspx/User_auth",
+                    data: JSON.stringify({ QueryStr: "Check_user", input: input }),
+                    dataType: "json",
+                    success: function (response) {
+                        const result = response.d;
+
+
+                        if (result != 1) {
+                            alert("Your Are Not Authorised To View This Page");
+                            window.location.href = '../Index/index.aspx';
+                        }
+                        else {
+                            $('#form1').show();
+
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error checking User:', error);
+                        alert('An error occurred while checking User.');
+                    }
+                });
+            }
+
+
+            function Daily_accessReport() {
+                console.log("Function started");
+
+                var fromDate = $('#from_dt').val();
+                var toDate = $('#ToDate').val();
+                console.log("Dates selected:", fromDate, toDate);
+
+                function formatDate(date) {
+                    var dateObj = new Date(date); // Convert string to Date object
+                    var day = ("0" + dateObj.getDate()).slice(-2); // Get day and add leading zero if needed
+                    var month = ("0" + (dateObj.getMonth() + 1)).slice(-2); // Get month and add leading zero if needed
+                    var year = dateObj.getFullYear(); // Get year
+                    return day + '-' + month + '-' + year; // Return in dd-mm-yyyy format
+                }
+
+                var formattedToDate = formatDate(toDate); // Convert to dd-mm-yyyy
+                var formattedFromDate = formatDate(fromDate);
+
+                var sysDate = new Date();
+                sysDate.setHours(0, 0, 0, 0);
+
+                console.log("Formatted dates:", formattedFromDate, formattedToDate);
+
+                // Ensure both dates are selected
+                if (!fromDate && !toDate) {
+                    alert("Please select both From and To dates.");
+                    $('#from_dt').focus(); // Focus on From Date field
+                    return;
+                }
+                else if (!fromDate) {
+                    alert("Please select the From Date.");
+                    $('#from_dt').focus(); // Focus on From Date field
+                    return;
+                }
+                else if (!toDate) {
+                    alert("Please select the To Date.");
+                    $('#ToDate').focus(); // Focus on To Date field
+                    return;
+                }
+
+                if (fromDate > toDate) {
+                    alert("From Date Cannot Be Greater Than To Date");
+                    return;
+                }
+
+                function preventEdit(event) {
+                    // Prevent backspace, delete, and other editing keys
+                    const keys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];
+                    if (keys.includes(event.key)) {
+                        event.preventDefault();
+                    }
+                }
+
+                console.log("jQuery elements check:");
+                console.log("- From date element exists:", $('#from_dt').length > 0);
+                console.log("- To date element exists:", $('#ToDate').length > 0);
+                console.log("- Table element exists:", $('#tblpen').length > 0);
+                console.log("- Loading element exists:", $('#loading').length > 0);
+                console.log("- Excel download element exists:", $('#excl_dwn').length > 0);
+
+                $('#excl_dwn').hide();
+                $('#tb').hide();
+                $('#searcheverything').hide();
+                $('#tblpen').empty(); // Clear previous data
+                $('#tblpen').show();
+
+                // Show the loading spinner
+                $('#loading').show();
+
+                var QueryString = "get_employ_access";
+                var InputString = formattedFromDate + "Â¥" + formattedToDate;
+                // Remove the unwanted character if present
+                InputString = InputString.replace(/Ã‚/g, "");
+
+
+                console.log("About to make AJAX call with parameters:", QueryString, InputString);
+
+                if (currentAjaxRequest) {
+                    currentAjaxRequest.abort();
+                }
+               // alert("Querystring: " + QueryString + "\nInputString: " + InputString);
+
+                currentAjaxRequest = $.ajax({
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    url: "Lag_Days_Report.aspx/Empen",
+                    data: "{QueryStr : '" + QueryString + "',input :'" + InputString + "'}",
+                    dataType: "json",
+                    success: function (Result) {
+                        console.log("AJAX success. Result received:", Result);
+
+                        if (Result.d && Result.d.length > 0) {
+                            console.log("Data returned. First record:", Result.d[0]);
+
+                            $('#tblpen').empty(); // Clear previous data
+                            $('#tblpen').show();
+                            $('#tb').show();
+                            $('#excl_dwn').show();
+                            $('#searcheverything').show();
+
+                            // Populate the table
+                            $('#tblpen').append('<thead class="thead"> <tr class="pointer"><td scope="col" class="col-md-1">SL NO</td><td scope="col">Emp Code</td><td scope="col">Emp Name</td><td scope="col">Post</td><td scope="col">Branch Id</td><td scope="col">Branch Name</td><td scope="col">Area</td><td scope="col"> Region</td><td scope="col"> Zone</td><td scope="col"> Outstanding In CRs</td><td scope="col"> Transfer Date</td><td scope="col">Reporting Due Date</td><td scope="col">Last Punch Date</td><td scope="col">Existing Shortage Lag Days</td><td scope="col">Reporting Lag Days After Transfer</td></tr></thead><tbody>');
+
+                            for (var i = 0; i < Result.d.length; i++) {
+                                var k = i + 1;
+                                $('#tblpen').append('<tr class="td_pd"><td>' + k + '</td>' +
+                                    '<td class="td_pd">' + Result.d[i].emp_code + '</td>' +
+                                    '<td class="td_pd">' + Result.d[i].emp_name + '</td>' +
+                                    '<td class="td_pd">' + Result.d[i].post + '</td>' +
+                                    '<td class="td_pd">' + Result.d[i].branch_id + '</td>' +
+                                    '<td class="td_pd">' + Result.d[i].branch_name + '</td>' +
+                                    '<td class="td_pd">' + Result.d[i].Area + '</td>' +
+                                    '<td class="td_pd">' + Result.d[i].Region + '</td>' +
+                                    '<td class="td_pd">' + Result.d[i].Zone + '</td>' +
+                                    '<td class="td_pd">' + Result.d[i].outstanding_crs + " CRs" + '</td>' +
+                                    '<td class="td_pd">' + Result.d[i].app_dt + '</td>' +
+                                    '<td class="td_pd">' + Result.d[i].eff_dt + '</td>' +
+                                    '<td class="td_pd">' + Result.d[i].last_punch + '</td>' +
+                                    '<td class="td_pd">' + Result.d[i].shortage_lag_days + '</td>' +
+                                    '<td class="td_pd">' + Result.d[i].lag_days + '</td>' +
+                                    '</tr>');
+                            }
+
+                            $('#loading').hide();
+                            $('#tblpen').append('</tbody>');
+                            console.log("Table populated with " + Result.d.length + " records");
+
+                            // Check if the first record contains an error message
+                            if (Result.d[0].emp_code === "ERROR") {
+                                alert("Server error: " + Result.d[0].emp_name);
+                            }
+                        } else {
+                            console.log("No data returned from server");
+                            alert("No Data Found for the selected date range.");
+                            $('#tblpen').empty(); // Clear previous data
+                            $('#tblpen').show();
+                            $('#loading').hide();
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("AJAX error details:", { xhr: xhr, status: status, error: error });
+                        $('#loading').hide(); // Hide the loading spinner in case of error
+                        alert("Error occurred: Status = " + status + ", Error = " + error + ", Response = " + (xhr.responseText || "No response"));
+                    }
+                });
+
+                console.log("AJAX request sent");
+            }
+
+
+
+
+            function fnExceldown() {
+                /*  alert("hi");*/
+                var tab_text = "<table border='2px'><tr bgcolor='#87AFC6'>";
+                var textRange; var j = 0;
+                tab = document.getElementById('tblpen'); // id of table
+
+                for (j = 0; j < tab.rows.length; j++) {
+                    tab_text = tab_text + tab.rows[j].innerHTML + "</tr>";
+                    //tab_text=tab_text+"</tr>";
+                }
+
+                tab_text = tab_text + "</table>";
+                tab_text = tab_text.replace(/View/g, "Uploaded");//remove if u want links in your table
+                tab_text = tab_text.replace(/<img[^>]*>/gi, ""); // remove if u want images in your table
+                tab_text = tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+
+                var ua = window.navigator.userAgent;
+                var msie = ua.indexOf("MSIE ");
+
+                if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+                {
+                    txtArea1.document.open("txt/html", "replace");
+                    txtArea1.document.write(tab_text);
+                    txtArea1.document.close();
+                    txtArea1.focus();
+                    sa = txtArea1.document.execCommand("SaveAs", true, "Report.xls");
+                }
+                else                 //other browser not tested on IE 11
+                    sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
+
+                return (sa);
+            }
+
+            function exitfnt() {
+                // If an AJAX request is ongoing, abort it
+                if (currentAjaxRequest) {
+                    currentAjaxRequest.abort();
+                }
+
+                // Redirect to the index page
+                window.location = "../Index/Index.aspx";
+            }
+
+
+
+        </script>
+   
+     <style>
+
+  .form-group {
+        display: flex;
+        justify-content: center; /* Horizontally center align */
+        align-items: center; /* Vertically center the items */
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        gap: 1.5rem; /* Space between input containers */
+    }
+
+    /* Style each input container */
+    .input-container {
+        display: flex;
+        flex-direction: column; /* Align label and input vertically */
+        justify-content: center;
+        max-width: 180px; /* Maximum width for the input container */
+        width: 100%; /* Ensure it's responsive */
+    }
+
+    /* Apply margin to create the 2cm gap between 'From Date' and 'To Date' */
+    .input-container:nth-child(1) {
+        margin-right: 2cm; /* Add 2cm gap after the first container */
+    }
+
+    /* Make input fields have curved corners */
+    .form-control {
+        width: 100%; /* Full width of the container */
+        padding: 8px; /* Padding inside the input field */
+        margin-top: 5px; /* Small gap between label and input */
+        border: 1px solid #ccc; /* Light border */
+        border-radius: 12px; /* Curved corners */
+        box-sizing: border-box; /* Include padding and border in width */
+        font-size: 1rem; /* Slightly larger text */
+        cursor: pointer; /* Ensure pointer cursor for clickable input */
+    }
+
+    /* Apply styles to the labels */
+    .input-container label {
+        margin-bottom: 5px; /* Small gap between label and input */
+        font-size: 1rem; /* Set label font size */
+        color: #333; /* Label color */
+    }
+
+    /* Make the form responsive on smaller screens */
+    @media (max-width: 768px) {
+        .form-group {
+            flex-direction: column; /* Stack the elements vertically */
+            gap: 10px; /* Smaller gap between fields */
+        }
+
+        .input-container {
+            width: 80%; /* 80% width of the container on smaller screens */
+        }
+
+        .form-control {
+            max-width: 100%; /* Remove max width */
+        }
+    }
+
+    /* Prevent manual editing with pointer events */
+    input[type="text"] {
+        pointer-events: auto; /* Allow pointer events for date picker */
+        user-select: none; /* Prevent text selection */
+    }
+
+    /* Disable manual editing on the date input field */
+    input[type="text"][readonly] {
+        background-color: #f4f4f4; /* Optional: Change background color to indicate readonly */
+    }
+
+    /* Keep the pointer events active when interacting with date input */
+    input[type="date"]:disabled {
+        pointer-events: none; /* Disable pointer events when the input is disabled */
+    }
+
+
+
+        #from_dt {
+        border-radius: 12px; /* Curved corners */
+        padding: 8px; /* Padding inside the input */
+        border: 1px solid #ccc; /* Light border around the input */
+        box-sizing: border-box; /* Ensure padding and border are included in the input width */
+    }
+        #ToDate {
+        border-radius: 12px; /* Curved corners */
+        padding: 8px; /* Padding inside the input */
+        border: 1px solid #ccc; /* Light border around the input */
+        box-sizing: border-box; /* Ensure padding and border are included in the input width */
+    }
+
+
+
+
+
+
+
+         /* Loading Spinner Styles */
+.loading {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #333;
+    display: none;
+}
+
+.loading-spinner {
+      position: absolute;
+    top: 100%;
+    left: 45%;
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+
+.scrolling-message {
+    margin-top: 10px;
+    font-size: 16px;  /* Adjusted text size */
+    color: #000;
+    display: inline-block;
+    overflow: hidden;
+    width: 0; /* Initially, the width is 0 to hide the text */
+    white-space: nowrap;
+    animation: typing 1s steps(30)  infinite alternate, blink 0.75s step-end infinite;
+    animation-delay: 0s, 3s;
+}
+
+/* Typing Animation (Smooth transition) */
+@keyframes typing {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+
+      60% {
+        /* Stay still for 2 seconds */
+        width: 100%;
+        opacity: 1;
+    }
+
+    100% {
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+/* Blinking Cursor Effect */
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+    100% {
+        border-color: black;
+    }
+}
+
+
+         .thead {
+        top: 0;
+        position: sticky;
+        background-color: #5e6a66;
+        color: white;
+        text-align: center;
+        font-size: 14px; /* Increase the font size here */
+         }
+
+             .thead th {
+                 font-size: 14px;
+             }
+
+         .td_pd {
+            padding: 4px !important;
+        }
+          .spn_btn {
+            padding: 0px 15px 0px 15px;
+            border: 1px solid;
+            border-radius: 3px;
+            font-size: 11px;
+            cursor: pointer;
+ 
+        }
+  /*        #loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}*/
+     
+   </style>
+ 
+
+
+</head>
+<body ng-app="myApp">
+  
+        <header class="header navbar navbar-fixed-top" role="banner">
+            <div style="background-color: #FFCC00;" class="container">
+                <ul class="nav navbar-nav">
+                    <li class="nav-toggle"><a href="javascript:void(0);" title=""><i class="icon-reorder"></i></a></li>
+                </ul>
+                <!-- <ul  class="nav navbar-nav">
+
+                <li class="nav-toggle" >fff</li>
+                
+            </ul>-->
+                <!--<img src="assets/img/logo.png" alt="logo" style="width: 270px; height: 45px" />-->
+                <div class="navbar-brand">
+                    <img src="../App_Themes/Theme/assets/img/logo.png" alt="logo" style="width: 76%; height: 100%;" />
+
+                </div>
+                <!--<a class="navbar-brand" href="index-2.html">
+                <img src="assets/img/logo.png" alt="logo" style="width: 270px; height: 45px" />
+            </a>-->
+                <a href="#" class="toggle-sidebar bs-tooltip" data-placement="bottom" data-original-title="Toggle navigation"><i class="icon-reorder"></i></a>
+
+                <ul class="nav navbar-nav navbar-left hidden-xs hidden-sm">
+
+                  
+                   
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    
+                   <ul class="dropdown-menu extended notification">
+                            <li class="title">
+                                <p>You have 7 pending tasks</p>
+                            </li>
+                            <li><a href="javascript:void(0);"><span class="task"><span class="desc">Preparing new release</span> <span class="percent">30%</span> </span>
+                                <div class="progress progress-small">
+                                    <div style="width: 30%;" class="progress-bar progress-bar-info"></div>
+                                </div>
+                            </a></li>
+                            <li><a href="javascript:void(0);"><span class="task"><span class="desc">Change management</span> <span class="percent">80%</span> </span>
+                                <div class="progress progress-small progress-striped active">
+                                    <div style="width: 80%;" class="progress-bar progress-bar-danger"></div>
+                                </div>
+                            </a></li>
+                            <li><a href="javascript:void(0);"><span class="task"><span class="desc">Mobile development</span> <span class="percent">60%</span> </span>
+                                <div class="progress progress-small">
+                                    <div style="width: 60%;" class="progress-bar progress-bar-success"></div>
+                                </div>
+                            </a></li>
+                            <li><a href="javascript:void(0);"><span class="task"><span class="desc">Database migration</span> <span class="percent">20%</span> </span>
+                                <div class="progress progress-small">
+                                    <div style="width: 20%;" class="progress-bar progress-bar-warning"></div>
+                                </div>
+                            </a></li>
+                            <li class="footer"><a href="javascript:void(0);">View all tasks</a> </li>
+                        </ul>
+                    </li>
+                         
+                    <li><a href="#" class="dropdown-toggle row-bg-toggle"><i class="icon-resize-vertical"></i></a></li>
+                    <li class="dropdown user"><a href="#" style="color: #000000; font-family: Tahoma; font-size: small;" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-male"></i><span id="uname" class="username">Shyam K S  </span> <i class="icon-caret-down small"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../Enrollment/profileView.aspx"><i class="icon-user"></i>My Profile</a></li>
+                            
+                            <li class="divider"></li>
+                           
+                            <li ><a href="../logout.aspx"  ><i class="icon-key"></i>Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div id="project-switcher" class="container project-switcher">
+                <div id="scrollbar">
+                    <div class="handle"></div>
+                </div>
+                <div id="frame">
+                    <ul class="project-list">
+                        <li><a href="javascript:void(0);"><span class="image"><i class="icon-desktop"></i></span><span class="title">Payment</span> </a></li>
+                        <li><a href="javascript:void(0);"><span class="image"><i class="icon-pencil"></i></span><span class="title">payroll</span> </a></li>
+                        <li class="current"><a href="javascript:void(0);"><span class="image"><i class="icon-group"></i></span><span class="title">Group</span> </a></li>
+                        <li><a href="javascript:void(0);"><span class="image"><i class="icon-thumbs-up"></i></span><span class="title">Likes</span> </a></li>
+                        <li><a href="javascript:void(0);"><span class="image"><i class="icon-male"></i></span><span class="title">Employee</span> </a></li>
+                        <li><a href="javascript:void(0);"><span class="image"><i class="icon-wrench"></i></span><span class="title">Settings</span> </a></li>
+                        <li><a href="javascript:void(0);"><span class="image"><i class="icon-question"></i></span><span class="title">FAQ</span> </a></li>
+                        <li><a href="javascript:void(0);"><span class="image"><i class="icon-book"></i></span><span class="title">Reports</span> </a></li>
+                        <li><a href="javascript:void(0);"><span class="image"><i class="icon-male"></i></span><span class="title">Profile</span> </a></li>
+                        <li><a href="javascript:void(0);"><span class="image"><i class="icon-bookmark"></i></span><span class="title">Favorites</span> </a></li>
+                        <li><a href="javascript:void(0);"><span class="image"><i class="icon-file"></i></span><span class="title">Gold Loan</span> </a></li>
+                        <li><a href="javascript:void(0);"><span class="image"><i class="icon-trash"></i></span><span class="title">Trash</span> </a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div id="container">
+
+            <div id="sidebar" class="sidebar-fixed">
+                <div id="sidebar-content">
+                    <form class="sidebar-search">
+                        
+                    </form>
+                                        
+
+
+
+                    <ul id="nav">
+
+
+                       
+
+                        
+
+                                <li><a href="javascript:void(0);"><i class="icon-group"></i>Employee Enrollment  </a>
+
+                                    <ul class="sub-menu">
+
+
+                                        
+                                                <li>
+                                                    
+                                                    <a href="../Bio_punching/punching_entroll.aspx"><i id="rpt_mainmenu_rpt_submenu_0_I1_0" class="icon-angle-right"></i>Finger Print entrol </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+      </ul>
+                                </li>
+
+
+                            
+
+                                <li><a href="javascript:void(0);"><i class="icon-male"></i>Employee Profile  </a>
+
+                                    <ul class="sub-menu">
+
+
+                                        
+                                                <li>
+                                                    
+                                                    <a href="../Enrollment/Emp_Profile_View.aspx"><i id="rpt_mainmenu_rpt_submenu_1_I1_0" class="icon-angle-right"></i>Employee Profile View </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../EMP_Profile_Update/Emp_Profile_Update.aspx"><i id="rpt_mainmenu_rpt_submenu_1_I1_1" class="icon-angle-right"></i>Employee Profile Updation </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../EMP_Profile_Update/Bank_Account_Update.aspx"><i id="rpt_mainmenu_rpt_submenu_1_I1_2" class="icon-angle-right"></i>Bank Account Updation </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+      </ul>
+                                </li>
+
+
+                            
+
+                                <li><a href="javascript:void(0);"><i class="icon-signout"></i>Leave  </a>
+
+                                    <ul class="sub-menu">
+
+
+                                        
+                                                <li>
+                                                    
+                                                    <a href="../Leave/Leave_Application.aspx"><i id="rpt_mainmenu_rpt_submenu_2_I1_0" class="icon-angle-right"></i>Leave Application </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Leave/Leave_cancel.aspx"><i id="rpt_mainmenu_rpt_submenu_2_I1_1" class="icon-angle-right"></i>Leave Cancellation Request </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Leave/leave_resubmission.aspx"><i id="rpt_mainmenu_rpt_submenu_2_I1_2" class="icon-angle-right"></i>Leave Resubmission </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Leave/Report_leave.aspx"><i id="rpt_mainmenu_rpt_submenu_2_I1_3" class="icon-angle-right"></i>Leave Applied Report </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Leave/Approved_Leave_Cancellation_Request.aspx"><i id="rpt_mainmenu_rpt_submenu_2_I1_4" class="icon-angle-right"></i>Approved Leave Cancel Request </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Leave/Earlygoing_Cancellation.aspx"><i id="rpt_mainmenu_rpt_submenu_2_I1_5" class="icon-angle-right"></i>Early Going Cancellation </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Leave/emp_leave_dtls.aspx"><i id="rpt_mainmenu_rpt_submenu_2_I1_6" class="icon-angle-right"></i>Leave Report </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Leave/earlygoing_apply.aspx"><i id="rpt_mainmenu_rpt_submenu_2_I1_7" class="icon-angle-right"></i>Early Going Application </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+      </ul>
+                                </li>
+
+
+                            
+
+                                <li><a href="javascript:void(0);"><i class="icon-globe"></i>Tour  </a>
+
+                                    <ul class="sub-menu">
+
+
+                                        
+                                                <li>
+                                                    
+                                                    <a href="../Tour/Tour_Application.aspx"><i id="rpt_mainmenu_rpt_submenu_3_I1_0" class="icon-angle-right"></i>Tour Application </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Tour/Tour_Cancel.aspx"><i id="rpt_mainmenu_rpt_submenu_3_I1_1" class="icon-angle-right"></i>Tour Cancel </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+      </ul>
+                                </li>
+
+
+                            
+
+                                <li><a href="javascript:void(0);"><i class="icon-exchange"></i>Transfer & Promotion  </a>
+
+                                    <ul class="sub-menu">
+
+
+                                        
+                                                <li>
+                                                    
+                                                    <a href="../Asirvad_Internal/Duty_Handing_Over.aspx"><i id="rpt_mainmenu_rpt_submenu_4_I1_0" class="icon-angle-right"></i>Duty Handing Over Request </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Asirvad_Internal/Duty_Taking_Over.aspx"><i id="rpt_mainmenu_rpt_submenu_4_I1_1" class="icon-angle-right"></i>Duty Taking Over </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Asirvad_Internal/Duty_Head_Over.aspx"><i id="rpt_mainmenu_rpt_submenu_4_I1_2" class="icon-angle-right"></i>Duty Handover Approval </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+      </ul>
+                                </li>
+
+
+                            
+
+                                <li><a href="javascript:void(0);"><i class="icon-exchange"></i>Report  </a>
+
+                                    <ul class="sub-menu">
+
+
+                                        
+                                                <li>
+                                                    
+                                                    <a href="../PunchingRpt/PnReports.aspx"><i id="rpt_mainmenu_rpt_submenu_5_I1_0" class="icon-angle-right"></i>Punching Report </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+      </ul>
+                                </li>
+
+
+                            
+
+                                <li><a href="javascript:void(0);"><i class="icon-male"></i>Resignation & Separation  </a>
+
+                                    <ul class="sub-menu">
+
+
+                                        
+                                                <li>
+                                                    
+                                                    <a href="../Resignation/Resignation_Cancellation_usr.aspx"><i id="rpt_mainmenu_rpt_submenu_6_I1_0" class="icon-angle-right"></i>Resgnation  Cancellation </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Resignation/resig_application.aspx"><i id="rpt_mainmenu_rpt_submenu_6_I1_1" class="icon-angle-right"></i>Application  </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+      </ul>
+                                </li>
+
+
+                            
+
+                                <li><a href="javascript:void(0);"><i class="icon-money"></i>Salary  </a>
+
+                                    <ul class="sub-menu">
+
+
+                                        
+                                                <li>
+                                                    
+                                                    <a href="../Salary/PayslipView.aspx"><i id="rpt_mainmenu_rpt_submenu_7_I1_0" class="icon-angle-right"></i>Payslip View </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Salary/tdsnew.aspx"><i id="rpt_mainmenu_rpt_submenu_7_I1_1" class="icon-angle-right"></i>TDS Declaration of Investments Form </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Asirvad_Internal/TDS_Proof_Upload.aspx"><i id="rpt_mainmenu_rpt_submenu_7_I1_2" class="icon-angle-right"></i>TDS Proof Upload </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Asirvad_Internal/TDS_Proof_Status.aspx"><i id="rpt_mainmenu_rpt_submenu_7_I1_3" class="icon-angle-right"></i>TDS Proof Status </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../SalaryReports/SalaryHoldReleaseReport.aspx"><i id="rpt_mainmenu_rpt_submenu_7_I1_4" class="icon-angle-right"></i>SALARY HOLD RELEASE REPORT </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+      </ul>
+                                </li>
+
+
+                            
+
+                                <li><a href="javascript:void(0);"><i class="icon-globe"></i>punching  </a>
+
+                                    <ul class="sub-menu">
+
+
+                                        
+                                                <li>
+                                                    
+                                                    <a href="../punching_shift/System_Work_Alert.aspx"><i id="rpt_mainmenu_rpt_submenu_8_I1_0" class="icon-angle-right"></i>My Work Alerts Today </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+      </ul>
+                                </li>
+
+
+                            
+
+                                <li><a href="javascript:void(0);"><i class="icon-globe"></i>Grievance  </a>
+
+                                    <ul class="sub-menu">
+
+
+                                        
+                                                <li>
+                                                    
+                                                    <a href="../Grievance_new/GrievanceReg.aspx"><i id="rpt_mainmenu_rpt_submenu_9_I1_0" class="icon-angle-right"></i>Grievance Register </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Grievance_new/Grievance_response.aspx"><i id="rpt_mainmenu_rpt_submenu_9_I1_1" class="icon-angle-right"></i>Grievance Response </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Grievance_new/Grievance_reply.aspx"><i id="rpt_mainmenu_rpt_submenu_9_I1_2" class="icon-angle-right"></i>Grievance Reply </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+      </ul>
+                                </li>
+
+
+                            
+
+                                <li><a href="javascript:void(0);"><i class="icon-male"></i>Staff Account  </a>
+
+                                    <ul class="sub-menu">
+
+
+                                        
+                                                <li>
+                                                    
+                                                    <a href="../Emp_account_rpt/Employee_staff_account.aspx"><i id="rpt_mainmenu_rpt_submenu_10_I1_0" class="icon-angle-right"></i>Staff report-statement </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Staff_Account/Staff_Account_Requst.aspx"><i id="rpt_mainmenu_rpt_submenu_10_I1_1" class="icon-angle-right"></i>Staff Account Credit Release Request </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+      </ul>
+                                </li>
+
+
+                            
+
+                                <li><a href="javascript:void(0);"><i class="icon-group"></i>IT Asset Updation  </a>
+
+                                    <ul class="sub-menu">
+
+
+                                        
+                                                <li>
+                                                    
+                                                    <a href="../Asirvad_Internal/It_asset_updation.aspx"><i id="rpt_mainmenu_rpt_submenu_11_I1_0" class="icon-angle-right"></i>Employee IT Asset Updation </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+      </ul>
+                                </li>
+
+
+                            
+
+                                <li><a href="javascript:void(0);"><i class="icon-group"></i>KRA  </a>
+
+                                    <ul class="sub-menu">
+
+
+                                        
+                                                <li>
+                                                    
+                                                    <a href="../Asirvad_Internal/KRA_Quarterly_Updation.aspx"><i id="rpt_mainmenu_rpt_submenu_12_I1_0" class="icon-angle-right"></i>KRA Entry </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+      </ul>
+                                </li>
+
+
+                            
+
+                                <li><a href="javascript:void(0);"><i class="icon-money"></i>EMPLOYEE DEATH BENEFIT FORM  </a>
+
+                                    <ul class="sub-menu">
+
+
+                                        
+                                                <li>
+                                                    
+                                                    <a href="../Asirvad_Internal/Epfo_form_declaration.aspx"><i id="rpt_mainmenu_rpt_submenu_13_I1_0" class="icon-angle-right"></i>Employee Death Benefit form </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+                                                <li>
+                                                    
+                                                    <a href="../Asirvad_Internal/EPFO_Updation.aspx"><i id="rpt_mainmenu_rpt_submenu_13_I1_1" class="icon-angle-right"></i>Employee Death Benefit form Updation </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+      </ul>
+                                </li>
+
+
+                            
+
+                                <li><a href="javascript:void(0);"><i class="icon-group"></i>PF Confirmation  </a>
+
+                                    <ul class="sub-menu">
+
+
+                                        
+                                                <li>
+                                                    
+                                                    <a href="../Salary/Pf_Confirmation.aspx"><i id="rpt_mainmenu_rpt_submenu_14_I1_0" class="icon-angle-right"></i>PF Details Confirmation </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+      </ul>
+                                </li>
+
+
+                            
+
+                                <li><a href="javascript:void(0);"><i class="icon-group"></i>Daily Transfer Report  </a>
+
+                                    <ul class="sub-menu">
+
+
+                                        
+                                                <li>
+                                                    
+                                                    <a href="../Asirvad_Internal/Lag_Days_Report.aspx"><i id="rpt_mainmenu_rpt_submenu_15_I1_0" class="icon-angle-right"></i>Lag Days Report </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+      </ul>
+                                </li>
+
+
+                            
+
+                                <li><a href="javascript:void(0);"><i class="icon-male"></i>ID CARD  </a>
+
+                                    <ul class="sub-menu">
+
+
+                                        
+                                                <li>
+                                                    
+                                                    <a href="../Asirvad_Internal/IDCARDREQUEST.aspx"><i id="rpt_mainmenu_rpt_submenu_16_I1_0" class="icon-angle-right"></i>ID-Card Request </a>
+
+                                                    <ul>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            
+      </ul>
+                                </li>
+
+
+                            
+
+                    </ul>
+
+
+
+
+                    <div class="sidebar-widget align-center">
+                        <div class="btn-group" data-toggle="buttons" id="theme-switcher">
+                            <label class="btn">
+                                <input type="radio" name="theme-switcher" data-theme="bright" /><i class="icon-sun"></i> Bright
+                            </label>
+                            <label class="btn btn-inverse active">
+                                <input type="radio" name="theme-switcher" data-theme="dark" /><i class="icon-moon"></i> Dark
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div id="divider" class="resizeable"></div>
+            </div>
+
+
+            <div id="content">
+                <div class="container">
+
+                    
+
+                     <div class="widget box">
+        <div class="row">
+
+                    
+ 
+     <div class="col-md-12" id="form1">
+        <form method="post" action="#" id="Form1" class="form-horizontal row-border">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="46F31B7B" />
+</div>
+            <div class="row ">
+                <div class="ma-header">
+                    <div class="col-md-12">
+                        <h3 style="color: #091221"><i class="icon-reorder"></i>LAG DAYS REPORT</h3>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+        <div class="form-group" >
+    <div class="date-label-container">
+        <label for="from_dt" class="date-label">From Date:</label>
+    </div>
+    <div class="input-container">
+        <input type="date" class="form-control" id="from_dt" onkeypress="return false" autocomplete="off" onkeydown="preventEdit(event)" />
+    </div>
+
+    <div class="date-label-container">
+        <label for="ToDate" class="date-label">To Date:</label>
+    </div>
+    <div class="input-container">
+        <input type="date" class="form-control" id="ToDate" onkeypress="return false" autocomplete="off" onkeydown="preventEdit(event)" />
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+            <br />
+            <br />
+            <div class="widget box align-center" style="padding-left:0.5cm">
+                <input id="btn_confirm" type="button" value="View" class="btn btn-prop" onclick="Daily_accessReport();" />
+
+                <input type="button" id="btn_exit" value="Exit" onclick="exitfnt();" class="btn btn-prop" />
+            </div>
+             </form>
+ 
+          <div class="" style="    padding-left: 10px;    padding-top: 14px;    font-size: 12px;    padding-right: 0px;" id="addfamilylist1" data-toggle="tooltip" data-placement="top" >
+              <div style="overflow-x: auto; overflow-y: auto; max-height: 800px;">
+                  <br />
+                  <br />
+                  <br />
+                  <div id="loading" class="loading" style="display: none;">
+                     
+                      <div class="loading-spinner"></div>
+                      <div class="scrolling-message">Please wait while data is fetched...</div>
+                  </div>
+
+
+
+
+                  <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+                      <!-- Search Box Container -->
+                      <div id="searcheverything" style="display: flex; align-items: center; border: 1px solid #ccc; border-radius: 25px; padding: 5px 10px; width: 250px; box-sizing: border-box;">
+                          <div style="flex-grow: 1;">
+                              <input
+                                  type="text"
+                                  id="text_search"
+                                  placeholder="Search Anything"
+                                  onkeyup="searching()"
+                                  onkeypress="validate(event);"
+                                  maxlength="10"
+                                  style="width: 100%; height: 34px; border: none; outline: none; padding-left: 10px; font-size: 14px;" />
+                          </div>
+
+                          <div style="display: flex; align-items: center; justify-content: center; margin-left: 10px;">
+                              <i class="fa fa-search" style="font-size: 16px; color: #333; cursor: pointer;"></i>
+                          </div>
+                      </div>
+
+                      <!-- Export to Excel Button -->
+                      <div id="excl_dwn" style="display:none;" >
+                          <input type="button" value="Export To Excel"  onclick="fnExceldown();" class="btn btn-prop" />
+                      </div> 
+                  </div>
+
+
+              
+
+                  <br />
+                  <div id="tb" style="display:none;">
+                  <table class="table table-sm text-md-left table-responsive text-center" id="tblpen" style="font-size: 11px;border: 2px solid black; border-collapse: collapse; overflow-x: auto; overflow-y: auto; display: block; max-height: 500px; width: 100%;">
+
+
+                                <thead class="thead" style="font-size: 13px;" onclick="disabled"></thead>
+
+
+
+ 
+ 
+                                <tr style="cursor: pointer;">
+                                </tr>
+ 
+                                <tbody style="cursor: pointer;"></tbody>
+                            </table>
+                    </div>
+                  </div>
+                        </div>
+ 
+       
+    </div>
+ 
+     <input name="ctl00$ContentPlaceHolder1$hdUserId1" type="hidden" id="ContentPlaceHolder1_hdUserId1" value="366608" />
+<input name="ctl00$ContentPlaceHolder1$hdPag" type="hidden" id="ContentPlaceHolder1_hdPag" />
+<input name="ctl00$ContentPlaceHolder1$hdSerLoan" type="hidden" id="ContentPlaceHolder1_hdSerLoan" />
+<input name="ctl00$ContentPlaceHolder1$hdSerbank" type="hidden" id="ContentPlaceHolder1_hdSerbank" />
+<input name="ctl00$ContentPlaceHolder1$hdBrid" type="hidden" id="ContentPlaceHolder1_hdBrid" value="2065" />
+<input name="ctl00$ContentPlaceHolder1$hdFirmId" type="hidden" id="ContentPlaceHolder1_hdFirmId" value="3" />
+ 
+ 
+
+            </div>
+                         </div>
+                </div>
+            </div>
+        </div>
+
+  
+</body>
+
+</html>

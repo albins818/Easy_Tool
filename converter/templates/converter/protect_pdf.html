@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protect PDF with Password</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2d3436; /* A serious, secure dark slate gray */
+            --primary-hover-color: #636e72;
+            --light-gray-color: #f0f4f8;
+            --medium-gray-color: #dce1e6;
+            --dark-gray-color: #555;
+            --text-color: #333;
+            --white-color: #ffffff;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-gray-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-color);
+            padding: 20px;
+        }
+        .container {
+            background-color: var(--white-color);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            max-width: 550px;
+            text-align: center;
+        }
+        .header h1 { font-size: 2rem; font-weight: 600; margin-bottom: 10px; }
+        .header p { font-size: 1rem; color: var(--dark-gray-color); margin-bottom: 30px; }
+
+        /* Upload Area */
+        #upload-area {
+            border: 2px dashed var(--medium-gray-color);
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            cursor: pointer;
+            transition: border-color 0.3s, background-color 0.3s;
+            margin-bottom: 25px;
+        }
+        #upload-area.drag-over { border-color: var(--primary-color); background-color: #fafafa; }
+        .upload-icon { color: var(--primary-color); margin-bottom: 10px; }
+        .upload-text { font-size: 1rem; font-weight: 500; }
+        .upload-text span { color: var(--primary-color); font-weight: 600; }
+        #pdf-input { display: none; }
+
+        /* File Info Display */
+        .file-info {
+            background-color: var(--light-gray-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            animation: fadeIn 0.3s ease-in-out;
+            margin-bottom: 25px;
+        }
+        .file-name { font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 15px; }
+        .remove-btn { background: none; border: none; color: var(--dark-gray-color); font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: color 0.3s; }
+        .remove-btn:hover { color: #e63946; }
+
+        /* Input Group (for password) */
+        .input-group { text-align: left; margin-bottom: 25px; }
+        .input-group label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-color); }
+        .password-container { position: relative; }
+        #password-input {
+            width: 100%;
+            padding: 12px 40px 12px 15px; /* Right padding for the icon */
+            border-radius: 8px;
+            border: 1px solid var(--medium-gray-color);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        #password-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(45, 52, 54, 0.2);
+        }
+        #toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--dark-gray-color);
+        }
+        #toggle-password svg { width: 20px; height: 20px; }
+
+        /* Shared elements */
+        .action-btn {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 15px 30px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.2s, opacity 0.3s;
+            margin-bottom: 30px;
+        }
+        .action-btn:hover:not(:disabled) { background-color: var(--primary-hover-color); transform: translateY(-2px); }
+        .action-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .back-link { text-decoration: none; color: var(--dark-gray-color); font-weight: 500; transition: color 0.3s; }
+        .back-link:hover { color: var(--primary-color); }
+        .hidden { display: none; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h1>Password Protect PDF</h1>
+            <p>Add a password to your PDF to encrypt it and prevent unauthorized access.</p>
+        </header>
+
+        <main>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <input type="file" id="pdf-input" name="pdf_file" accept=".pdf" required>
+
+                <!-- Step 1: File Upload -->
+                <label for="pdf-input" id="upload-area">
+                    <div class="upload-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
+                    </div>
+                    <div class="upload-text">Drag & drop PDF or <span>click to browse</span>.</div>
+                </label>
+
+                <div id="file-info" class="file-info hidden">
+                    <span id="file-name" class="file-name"></span>
+                    <button type="button" id="remove-btn" class="remove-btn">×</button>
+                </div>
+
+                <!-- Step 2: Password Input -->
+                <div class="input-group">
+                    <label for="password-input">Set a Password</label>
+                    <div class="password-container">
+                        <input type="password" id="password-input" name="password" placeholder="Enter password" required>
+                        <button type="button" id="toggle-password" title="Show/hide password">
+                            <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg>
+                            <svg id="eye-slash-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-eye-slash-fill hidden" viewBox="0 0 16 16"><path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/><path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" id="submit-btn" class="action-btn">Protect & Download</button>
+            </form>
+
+            <a href="/" class="back-link">← Back to Home</a>
+        </main>
+    </div>
+
+    <script>
+        const pdfInput = document.getElementById('pdf-input');
+        const passwordInput = document.getElementById('password-input');
+        const submitBtn = document.getElementById('submit-btn');
+        const uploadArea = document.getElementById('upload-area');
+        const fileInfo = document.getElementById('file-info');
+        const fileNameDisplay = document.getElementById('file-name');
+        const removeBtn = document.getElementById('remove-btn');
+        const togglePassword = document.getElementById('toggle-password');
+        const eyeIcon = document.getElementById('eye-icon');
+        const eyeSlashIcon = document.getElementById('eye-slash-icon');
+
+        const checkFormValidity = () => {
+            const isFileSelected = pdfInput.files.length > 0;
+            const isPasswordEntered = passwordInput.value.trim() !== '';
+            submitBtn.disabled = !(isFileSelected && isPasswordEntered);
+        };
+
+        const handleFileSelection = () => {
+            if (pdfInput.files.length > 0) {
+                fileNameDisplay.textContent = pdfInput.files[0].name;
+                uploadArea.classList.add('hidden');
+                fileInfo.classList.remove('hidden');
+            } else {
+                uploadArea.classList.remove('hidden');
+                fileInfo.classList.add('hidden');
+            }
+            checkFormValidity();
+        };
+
+        const resetFileInput = () => {
+            pdfInput.value = '';
+            handleFileSelection();
+        };
+
+        const togglePasswordVisibility = () => {
+            const isPassword = passwordInput.type === 'password';
+            passwordInput.type = isPassword ? 'text' : 'password';
+            eyeIcon.classList.toggle('hidden', isPassword);
+            eyeSlashIcon.classList.toggle('hidden', !isPassword);
+        };
+
+        // Initial check
+        checkFormValidity();
+
+        // Event Listeners
+        pdfInput.addEventListener('change', handleFileSelection);
+        passwordInput.addEventListener('input', checkFormValidity);
+        removeBtn.addEventListener('click', resetFileInput);
+        togglePassword.addEventListener('click', togglePasswordVisibility);
+
+        // Drag and Drop
+        uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.classList.add('drag-over'); });
+        uploadArea.addEventListener('dragleave', () => { uploadArea.classList.remove('drag-over'); });
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('drag-over');
+            const files = e.dataTransfer.files;
+            if (files.length > 0 && files[0].type === "application/pdf") {
+                pdfInput.files = files;
+                handleFileSelection();
+            } else {
+                alert('Please drop a valid PDF file.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to PDF Converter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Basic Setup */
+        :root {
+            --primary-color: #007BFF;
+            --primary-hover-color: #0056b3;
+            --light-gray-color: #f0f4f8;
+            --medium-gray-color: #dce1e6;
+            --dark-gray-color: #555;
+            --text-color: #333;
+            --white-color: #ffffff;
+            --success-color: #28a745;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-gray-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-color);
+            padding: 20px;
+        }
+
+        /* Main Container */
+        .container {
+            background-color: var(--white-color);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            max-width: 550px;
+            text-align: center;
+        }
+
+        /* Header */
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: var(--dark-gray-color);
+            margin-bottom: 30px;
+        }
+
+        /* Form & File Upload Area */
+        .upload-area {
+            border: 2px dashed var(--medium-gray-color);
+            border-radius: var(--border-radius);
+            padding: 40px 20px;
+            cursor: pointer;
+            transition: border-color 0.3s, background-color 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .upload-area:hover, .upload-area.drag-over {
+            border-color: var(--primary-color);
+            background-color: #f8faff;
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .upload-text span {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Hidden default file input */
+        #file-input {
+            display: none;
+        }
+
+        /* File List for Visual Feedback */
+        #file-list {
+            margin-top: 20px;
+            text-align: left;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .file-item {
+            background-color: var(--light-gray-color);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 15px 30px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-hover-color);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Back Link */
+        .back-link {
+            text-decoration: none;
+            color: var(--dark-gray-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            .header p {
+                font-size: 0.9rem;
+            }
+            .upload-area {
+                padding: 30px 15px;
+            }
+            .submit-btn {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h1>Image to PDF Converter</h1>
+            <p>Select multiple images to combine into a single PDF document.</p>
+        </header>
+
+        <main>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- Visually hidden file input -->
+                <input type="file" id="file-input" name="images" multiple required accept="image/*">
+
+                <!-- Custom file upload area -->
+                <label for="file-input" class="upload-area" id="upload-label">
+                    <div class="upload-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-cloud-arrow-up-fill" viewBox="0 0 16 16">
+                            <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 5.146a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2z"/>
+                        </svg>
+                    </div>
+                    <div class="upload-text">
+                        <span>Click to browse</span> or drag and drop files here
+                    </div>
+                </label>
+
+                <!-- Container to display names of selected files -->
+                <div id="file-list"></div>
+
+                <button type="submit" class="submit-btn">Convert to PDF</button>
+            </form>
+
+            <a href="/" class="back-link">← Back to Home</a>
+        </main>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const uploadLabel = document.getElementById('upload-label');
+        const fileListContainer = document.getElementById('file-list');
+
+        // Function to update the file list display
+        const updateFileList = () => {
+            fileListContainer.innerHTML = ''; // Clear current list
+            const files = fileInput.files;
+
+            if (files.length > 0) {
+                // Create a list of file names
+                for (let i = 0; i < files.length; i++) {
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'file-item';
+                    fileItem.textContent = files[i].name;
+                    fileListContainer.appendChild(fileItem);
+                }
+            }
+        };
+
+        // Listen for changes on the file input
+        fileInput.addEventListener('change', updateFileList);
+
+        // Drag and Drop functionality
+        uploadLabel.addEventListener('dragover', (e) => {
+            e.preventDefault(); // Prevent default browser behavior
+            uploadLabel.classList.add('drag-over');
+        });
+
+        uploadLabel.addEventListener('dragleave', () => {
+            uploadLabel.classList.remove('drag-over');
+        });
+
+        uploadLabel.addEventListener('drop', (e) => {
+            e.preventDefault(); // Prevent default browser behavior
+            uploadLabel.classList.remove('drag-over');
+
+            // Assign dropped files to the file input
+            fileInput.files = e.dataTransfer.files;
+
+            // Manually trigger the update
+            updateFileList();
+        });
+    </script>
+</body>
+</html>

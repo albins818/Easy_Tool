@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Pages from PDF</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #f4a261; /* A friendly "edit" orange */
+            --primary-hover-color: #e76f51;
+            --light-gray-color: #f0f4f8;
+            --medium-gray-color: #dce1e6;
+            --dark-gray-color: #555;
+            --text-color: #333;
+            --white-color: #ffffff;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-gray-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-color);
+            padding: 20px;
+        }
+        .container {
+            background-color: var(--white-color);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            max-width: 550px;
+            text-align: center;
+        }
+        .header h1 { font-size: 2rem; font-weight: 600; margin-bottom: 10px; }
+        .header p { font-size: 1rem; color: var(--dark-gray-color); margin-bottom: 30px; }
+
+        /* Upload Area */
+        #upload-area {
+            border: 2px dashed var(--medium-gray-color);
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            cursor: pointer;
+            transition: border-color 0.3s, background-color 0.3s;
+            margin-bottom: 25px;
+        }
+        #upload-area.drag-over { border-color: var(--primary-color); background-color: #fffaf5; }
+        .upload-icon { color: var(--primary-color); margin-bottom: 10px; }
+        .upload-text { font-size: 1rem; font-weight: 500; }
+        .upload-text span { color: var(--primary-color); font-weight: 600; }
+        #pdf-input { display: none; }
+
+        /* File Info Display */
+        .file-info {
+            background-color: var(--light-gray-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            animation: fadeIn 0.3s ease-in-out;
+            margin-bottom: 25px;
+        }
+        .file-name { font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 15px; }
+        .remove-btn { background: none; border: none; color: var(--dark-gray-color); font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: color 0.3s; }
+        .remove-btn:hover { color: #e63946; }
+
+        /* Pages Input Group */
+        .input-group {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+        #pages-input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--medium-gray-color);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        #pages-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.3);
+        }
+
+        /* Shared elements */
+        .action-btn {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 15px 30px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.2s, opacity 0.3s;
+            margin-bottom: 30px;
+        }
+        .action-btn:hover:not(:disabled) { background-color: var(--primary-hover-color); transform: translateY(-2px); }
+        .action-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .back-link { text-decoration: none; color: var(--dark-gray-color); font-weight: 500; transition: color 0.3s; }
+        .back-link:hover { color: var(--primary-color); }
+        .hidden { display: none; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h1>Delete Pages from PDF</h1>
+            <p>Select a PDF, enter the page numbers you want to remove, and get a new file.</p>
+        </header>
+
+        <main>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- Hidden file input, controlled by JS -->
+                <input type="file" id="pdf-input" name="pdf_file" accept=".pdf" required>
+
+                <!-- Step 1: File Upload -->
+                <label for="pdf-input" id="upload-area">
+                    <div class="upload-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16"><path d="M3.5 3.5c-.614-.884-.074-1.962.858-2.5L8 7.226 11.642 1c.932.538 1.472 1.616.858 2.5L8.81 8.61l1.556 2.661a2.5 2.5 0 1 1-.794.637L8 9.73l-1.572 2.177a2.5 2.5 0 1 1-.794-.637L7.19 8.61 3.5 3.5zm2.5 10a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0zm7 0a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/></svg>
+                    </div>
+                    <div class="upload-text">Drag & drop PDF or <span>click to browse</span>.</div>
+                </label>
+
+                <!-- This area appears after a file is selected -->
+                <div id="file-info" class="file-info hidden">
+                    <span id="file-name" class="file-name"></span>
+                    <button type="button" id="remove-btn" class="remove-btn">×</button>
+                </div>
+
+                <!-- Step 2: Pages to Delete Input -->
+                <div class="input-group">
+                    <label for="pages-input">Pages to delete</label>
+                    <input type="text" id="pages-input" name="pages_to_delete" placeholder="e.g., 2, 4-6, 8" required>
+                </div>
+
+                <button type="submit" id="submit-btn" class="action-btn">Delete Pages & Download</button>
+            </form>
+
+            <a href="/" class="back-link">← Back to Home</a>
+        </main>
+    </div>
+
+    <script>
+        const pdfInput = document.getElementById('pdf-input');
+        const pagesInput = document.getElementById('pages-input');
+        const submitBtn = document.getElementById('submit-btn');
+
+        const uploadArea = document.getElementById('upload-area');
+        const fileInfo = document.getElementById('file-info');
+        const fileNameDisplay = document.getElementById('file-name');
+        const removeBtn = document.getElementById('remove-btn');
+
+        const checkFormValidity = () => {
+            const isFileSelected = pdfInput.files.length > 0;
+            const arePagesEntered = pagesInput.value.trim() !== '';
+            submitBtn.disabled = !(isFileSelected && arePagesEntered);
+        };
+
+        const handleFileSelection = () => {
+            if (pdfInput.files.length > 0) {
+                const file = pdfInput.files[0];
+                fileNameDisplay.textContent = file.name;
+                uploadArea.classList.add('hidden');
+                fileInfo.classList.remove('hidden');
+            } else {
+                uploadArea.classList.remove('hidden');
+                fileInfo.classList.add('hidden');
+            }
+            checkFormValidity();
+        };
+
+        const resetFileInput = () => {
+            pdfInput.value = '';
+            handleFileSelection();
+        };
+
+        // Initial check
+        checkFormValidity();
+
+        // Event Listeners
+        pdfInput.addEventListener('change', handleFileSelection);
+        pagesInput.addEventListener('input', checkFormValidity);
+        removeBtn.addEventListener('click', resetFileInput);
+
+        // Drag and Drop
+        uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.classList.add('drag-over'); });
+        uploadArea.addEventListener('dragleave', () => { uploadArea.classList.remove('drag-over'); });
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('drag-over');
+            const files = e.dataTransfer.files;
+            if (files.length > 0 && files[0].type === "application/pdf") {
+                pdfInput.files = files;
+                handleFileSelection();
+            } else {
+                alert('Please drop a valid PDF file.');
+            }
+        });
+    </script>
+</body>
+</html>

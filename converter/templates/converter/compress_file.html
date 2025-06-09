@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compress PDF, Word, Excel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6a4c93; /* A strong, modern purple */
+            --primary-hover-color: #523a78;
+            --light-gray-color: #f0f4f8;
+            --medium-gray-color: #dce1e6;
+            --dark-gray-color: #555;
+            --text-color: #333;
+            --white-color: #ffffff;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-gray-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-color);
+            padding: 20px;
+        }
+        .container {
+            background-color: var(--white-color);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            max-width: 550px;
+            text-align: center;
+        }
+        .header h1 { font-size: 2rem; font-weight: 600; margin-bottom: 10px; }
+        .header p { font-size: 1rem; color: var(--dark-gray-color); margin-bottom: 30px; }
+
+        /* Upload Area */
+        #upload-area {
+            border: 2px dashed var(--medium-gray-color);
+            border-radius: var(--border-radius);
+            padding: 40px 20px;
+            cursor: pointer;
+            transition: border-color 0.3s, background-color 0.3s;
+            margin-bottom: 20px;
+        }
+        #upload-area.drag-over { border-color: var(--primary-color); background-color: #f8f7fa; }
+        .upload-icon { color: var(--primary-color); margin-bottom: 15px; }
+        .upload-text { font-size: 1rem; font-weight: 500; }
+        .upload-text span { color: var(--primary-color); font-weight: 600; }
+        #file-input { display: none; }
+
+        /* File Info Display */
+        .file-info {
+            background-color: var(--light-gray-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .file-name { font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 15px; }
+        .remove-btn { background: none; border: none; color: var(--dark-gray-color); font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: color 0.3s; }
+        .remove-btn:hover { color: #e63946; }
+
+        /* Shared elements */
+        .action-btn {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 15px 30px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.2s, opacity 0.3s;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        .action-btn:hover:not(:disabled) { background-color: var(--primary-hover-color); transform: translateY(-2px); }
+        .action-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .back-link { text-decoration: none; color: var(--dark-gray-color); font-weight: 500; transition: color 0.3s; }
+        .back-link:hover { color: var(--primary-color); }
+        .hidden { display: none; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h1>Compress Files</h1>
+            <p>Reduce the size of your PDF, Word, and Excel files quickly and easily.</p>
+        </header>
+
+        <main>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- Hidden file input with accept attribute -->
+                <input type="file" id="file-input" name="upload_file" accept=".pdf,.docx,.xlsx" required>
+
+                <!-- This area acts as the main dropzone and file display -->
+                <div id="upload-area">
+                    <label for="file-input" id="upload-prompt">
+                        <div class="upload-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" fill="currentColor" class="bi bi-file-earmark-zip-fill" viewBox="0 0 16 16"><path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M6.5 7.5a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v.938l.4 1.599a1 1 0 0 1-.416 1.074l-.93.62a1 1 0 0 1-1.109 0l-.93-.62a1 1 0 0 1-.415-1.074l.4-1.599V7.5z"/></svg>
+                        </div>
+                        <div class="upload-text">Drag & drop a file or <span>click to browse</span>.</div>
+                        <small style="color: #888; display: block; margin-top: 8px;">Supports .pdf, .docx, .xlsx</small>
+                    </label>
+
+                    <div id="file-info" class="file-info hidden">
+                        <span id="file-name" class="file-name"></span>
+                        <button type="button" id="remove-btn" class="remove-btn">×</button>
+                    </div>
+                </div>
+
+                <button type="submit" id="submit-btn" class="action-btn" disabled>Compress File</button>
+            </form>
+
+            <a href="/" class="back-link">← Back to Home</a>
+        </main>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const uploadArea = document.getElementById('upload-area');
+        const uploadPrompt = document.getElementById('upload-prompt');
+        const fileInfo = document.getElementById('file-info');
+        const fileNameDisplay = document.getElementById('file-name');
+        const removeBtn = document.getElementById('remove-btn');
+        const submitBtn = document.getElementById('submit-btn');
+
+        const handleFileSelection = () => {
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                fileNameDisplay.textContent = file.name;
+                uploadArea.classList.add('hidden');
+                fileInfo.classList.remove('hidden');
+                submitBtn.disabled = false;
+            } else {
+                uploadArea.classList.remove('hidden');
+                fileInfo.classList.add('hidden');
+                submitBtn.disabled = true;
+            }
+        };
+
+        const resetFileInput = () => {
+            fileInput.value = '';
+            handleFileSelection();
+        };
+
+        // Event Listeners
+        fileInput.addEventListener('change', handleFileSelection);
+        removeBtn.addEventListener('click', resetFileInput);
+
+        // Drag and Drop
+        uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.classList.add('drag-over'); });
+        uploadArea.addEventListener('dragleave', () => { uploadArea.classList.remove('drag-over'); });
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('drag-over');
+
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                const allowedTypes = ['.pdf', '.docx', '.xlsx'];
+                const droppedFile = files[0];
+                const fileExtension = '.' + droppedFile.name.split('.').pop().toLowerCase();
+
+                if (allowedTypes.includes(fileExtension)) {
+                    fileInput.files = files; // Assign dropped file to the input
+                    handleFileSelection();
+                } else {
+                    alert('Invalid file type. Please drop a .pdf, .docx, or .xlsx file.');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

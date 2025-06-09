@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word to PDF - EasyTool</title>
+
+    <style>
+        /* All the CSS from the previous example stays the same. */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        body{font-family:'Poppins',sans-serif;background-color:#f4f7f9;color:#333;margin:0;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:100vh;padding:1rem;}
+        .tool-container{background-color:#ffffff;padding:2.5rem 3rem;border-radius:15px;box-shadow:0 8px 30px rgba(0,0,0,0.1);text-align:center;width:100%;max-width:550px;box-sizing:border-box;}
+        h2{font-size:2.5rem;font-weight:700;color:#2c3e50;margin-top:0;margin-bottom:0.5rem;}
+        .description{color:#7f8c8d;margin-bottom:2.5rem;}
+        .file-upload-wrapper{position:relative;margin-bottom:1rem;}
+        input[type="file"]{display:none;}
+        .file-upload-label{display:block;padding:2.5rem 1rem;border:2px dashed #d0d5db;border-radius:10px;cursor:pointer;background-color:#fafbfd;transition:all 0.3s ease;}
+        .file-upload-label:hover{border-color:#3498db;background-color:#f0f8ff;}
+        .file-upload-icon{font-size:2.5rem;color:#3498db;}
+        .file-upload-text{display:block;margin-top:0.5rem;color:#34495e;font-weight:600;}
+        .file-upload-wrapper.dragover .file-upload-label{border-style:solid;border-color:#3498db;background-color:#eaf5ff;}
+        .file-upload-wrapper.success .file-upload-label{border-color:#2ecc71;border-style:solid;background-color:#f0fff5;}
+        .file-upload-wrapper.success .file-upload-icon{color:#2ecc71;}
+        .file-upload-wrapper.error .file-upload-label{border-color:#e74c3c;border-style:solid;background-color:#fff1f1;}
+        .file-upload-wrapper.error .file-upload-icon{color:#e74c3c;}
+        #error-message{color:#e74c3c;font-weight:600;font-size:0.9rem;margin-top:0.5rem;height:1.2em;}
+        .btn-convert{background-color:#3498db;color:white;border:none;padding:1rem 2.5rem;font-size:1.1rem;font-weight:600;border-radius:8px;cursor:pointer;transition:all 0.3s ease;width:100%;}
+        .btn-convert:hover:not(:disabled){background-color:#2980b9;transform:translateY(-2px);}
+        .btn-convert:disabled{background-color:#bdc3c7;cursor:not-allowed;}
+        .back-link{margin-top:2rem;color:#7f8c8d;text-decoration:none;font-weight:600;transition:color 0.3s ease;}
+        .back-link:hover{color:#3498db;}
+    </style>
+</head>
+<body>
+
+    <main class="tool-container">
+        <h2>Convert Word to PDF</h2>
+        <p class="description">Upload your .docx file. The page will refresh automatically after download.</p>
+
+        <!-- The form's action needs to be set dynamically by JavaScript -->
+        <form id="upload-form" method="post" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+
+            <div id="file-wrapper" class="file-upload-wrapper">
+                <label for="file-input" class="file-upload-label">
+                    <div id="upload-icon" class="file-upload-icon">📤</div>
+                    <div id="upload-text" class="file-upload-text">Click to browse or drag & drop a .docx file</div>
+                </label>
+                <input type="file" id="file-input" name="word_file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+            </div>
+
+            <div id="error-message"></div>
+
+            <button id="submit-btn" type="submit" class="btn-convert" disabled>Convert to PDF</button>
+        </form>
+    </main>
+
+    <a href="/" class="back-link">← Back to Home</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // ... All the validation logic from before ...
+            const MAX_FILE_SIZE_MB = 10;
+            const ALLOWED_FILE_TYPE = '.docx';
+            const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
+            const form = document.getElementById('upload-form');
+            const fileInput = document.getElementById('file-input');
+            const fileWrapper = document.getElementById('file-wrapper');
+            const uploadIcon = document.getElementById('upload-icon');
+            const uploadText = document.getElementById('upload-text');
+            const errorMessage = document.getElementById('error-message');
+            const submitBtn = document.getElementById('submit-btn');
+            let currentFile = null;
+
+            function showState(state, message) {
+                fileWrapper.classList.remove('success', 'error', 'dragover');
+                if (state) fileWrapper.classList.add(state);
+                switch(state) {
+                    case 'success':
+                        uploadIcon.textContent = '✅';
+                        uploadText.textContent = message;
+                        errorMessage.textContent = '';
+                        submitBtn.disabled = false;
+                        break;
+                    case 'error':
+                        uploadIcon.textContent = '❌';
+                        uploadText.textContent = 'Please try again';
+                        errorMessage.textContent = message;
+                        submitBtn.disabled = true;
+                        break;
+                    default:
+                        uploadIcon.textContent = '📤';
+                        uploadText.textContent = 'Click to browse or drag & drop a .docx file';
+                        errorMessage.textContent = '';
+                        submitBtn.disabled = true;
+                        break;
+                }
+            }
+
+            function validateFile(file) {
+                if (!file) {
+                    showState('error', 'No file selected.');
+                    return false;
+                }
+                if (!file.name.toLowerCase().endsWith(ALLOWED_FILE_TYPE)) {
+                    showState('error', `Invalid file type. Please select a ${ALLOWED_FILE_TYPE} file.`);
+                    return false;
+                }
+                if (file.size > MAX_FILE_SIZE_BYTES) {
+                    showState('error', `File is too large. Max size is ${MAX_FILE_SIZE_MB}MB.`);
+                    return false;
+                }
+                return true;
+            }
+
+            function handleFileSelect(files) {
+                if (files.length > 1) {
+                    showState('error', 'Please select only one file.');
+                    fileInput.value = '';
+                    return;
+                }
+                currentFile = files[0];
+                if (validateFile(currentFile)) {
+                    showState('success', `File ready: ${currentFile.name}`);
+                }
+            }
+
+            fileInput.addEventListener('change', () => handleFileSelect(fileInput.files));
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => fileWrapper.addEventListener(eventName, e => {e.preventDefault(); e.stopPropagation();}, false));
+            ['dragenter', 'dragover'].forEach(eventName => fileWrapper.addEventListener(eventName, () => {if (!fileWrapper.classList.contains('success') && !fileWrapper.classList.contains('error')) fileWrapper.classList.add('dragover');}, false));
+            fileWrapper.addEventListener('dragleave', () => fileWrapper.classList.remove('dragover'), false);
+            fileWrapper.addEventListener('drop', (e) => {fileWrapper.classList.remove('dragover'); handleFileSelect(e.dataTransfer.files);}, false);
+
+            // --- NEW: FORM SUBMISSION LOGIC ---
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // ALWAYS prevent the default form submission
+
+                if (!validateFile(currentFile)) {
+                    return; // Don't submit if validation fails
+                }
+
+                // 1. Generate a unique token for this download
+                const downloadToken = Date.now().toString();
+
+                // 2. Set the form's action URL with the token
+                // Replace '/word-to-pdf/' with your actual URL if different
+                form.action = `/word-to-pdf/?downloadToken=${downloadToken}`;
+
+                // 3. Change UI to "Processing..." state
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Processing...';
+
+                // 4. Start polling for the cookie
+                const interval = setInterval(function() {
+                    // Check all cookies for 'downloadToken=THE_VALUE_WE_SET'
+                    if (document.cookie.indexOf(`downloadToken=${downloadToken}`) !== -1) {
+                        // 5. If cookie is found:
+                        clearInterval(interval); // Stop checking
+
+                        // Clear the cookie by setting an old expiry date
+                        document.cookie = `downloadToken=${downloadToken}; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+
+                        // 6. Refresh the page after a short delay to ensure download starts
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1000); // 1-second delay
+                    }
+                }, 1000); // Check every 1000ms (1 second)
+
+                // 7. Finally, submit the form programmatically
+                form.submit();
+            });
+        });
+    </script>
+</body>
+</html>

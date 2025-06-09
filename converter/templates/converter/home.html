@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyTool - All-in-One Document Tools</title>
+
+    <style>
+        /* --- 1. FONT AND GLOBAL STYLES --- */
+
+        /* Import a modern font from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f9; /* A light, clean background color */
+            color: #333;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem; /* Add padding for smaller screens */
+        }
+
+        /* --- 2. MAIN CONTAINER AND HEADINGS --- */
+
+        .container {
+            width: 100%;
+            max-width: 1200px; /* Max width for large screens */
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #2c3e50; /* A dark, professional blue */
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            color: #7f8c8d; /* A softer gray for the tagline */
+            margin-bottom: 4rem; /* More space between title and cards */
+        }
+
+        /* --- 3. THE CARD GRID --- */
+
+        .tool-grid {
+            /* This creates a responsive grid that fits as many columns as possible */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem; /* The space between the cards */
+            list-style: none; /* Removes the default list bullets */
+            padding: 0;
+            margin: 0;
+        }
+
+        /* --- 4. INDIVIDUAL CARD STYLING --- */
+
+        .tool-card {
+            background-color: #ffffff;
+            border-radius: 15px; /* Softer, more modern rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* A subtle shadow */
+            overflow: hidden; /* Ensures content stays within the rounded corners */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px); /* Lifts the card up on hover */
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.15); /* A more prominent shadow on hover */
+        }
+
+        .tool-card a {
+            display: flex;
+            flex-direction: column; /* Stacks the icon and text vertically */
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem 1rem;
+            text-decoration: none;
+            color: #34495e; /* Text color for the card content */
+            font-weight: 600;
+            font-size: 1.1rem;
+            height: 100%; /* Makes sure the link fills the card */
+            box-sizing: border-box; /* Includes padding in the total height/width */
+        }
+
+        .tool-icon {
+            font-size: 3rem; /* Makes the icon large and prominent */
+            margin-bottom: 1rem; /* Space between icon and text */
+        }
+
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <h1>Welcome to EasyTool</h1>
+        <p class="tagline">Your simple, free, and powerful online document solution.</p>
+
+        <ul class="tool-grid">
+            <!-- I've added a class "tool-card" to the <li> and icons in a <span> -->
+            <li class="tool-card">
+                <a href="/word-to-pdf/">
+                    <span class="tool-icon">📄</span>
+                    <span>Word to PDF</span>
+                </a>
+            </li>
+            <li class="tool-card">
+                <a href="/image-to-pdf/">
+                    <span class="tool-icon">🖼️</span>
+                    <span>Image to PDF</span>
+                </a>
+            </li>
+            <li class="tool-card">
+                <a href="/pdf-to-image/">
+                    <span class="tool-icon">🏞️</span>
+                    <span>PDF to Image</span>
+                </a>
+            </li>
+            <li class="tool-card">
+                <a href="/pdf-to-word/">
+                    <span class="tool-icon">📝</span>
+                    <span>PDF to Word</span>
+                </a>
+            </li>
+            <li class="tool-card">
+                <a href="/extract-from-pdf/">
+                    <span class="tool-icon">🔎</span>
+                    <span>Extract from PDF</span>
+                </a>
+            </li>
+            <li class="tool-card">
+                <a href="/delete-pdf-pages/">
+                    <span class="tool-icon">✂️</span>
+                    <span>Delete PDF Pages</span>
+                </a>
+            </li>
+            <li class="tool-card">
+                <a href="/compress-file/">
+                    <span class="tool-icon">📦</span>
+                    <span>Compress File</span>
+                </a>
+            </li>
+            <li class="tool-card">
+                <a href="/protect-pdf/">
+                    <span class="tool-icon">🛡️</span>
+                    <span>Protect PDF</span>
+                </a>
+            </li>
+        </ul>
+    </main>
+
+</body>
+</html>
