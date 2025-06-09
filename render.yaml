@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image to PDF</title>
+</head>
+<body>
+    <h2>Convert Images to PDF</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Select image files:</label><br><br>
+        <input type="file" name="images" multiple required><br><br>
+        <button type="submit">Convert to PDF</button>
+    </form>
+    <br>
+    <a href="/">Back to Home</a>
+</body>
+</html>
