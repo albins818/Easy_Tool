@@ -115,6 +115,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
+ALLOWED_HOSTS = ['easy-tool.onrender.com', 'localhost', '127.0.0.1']
+
+DEBUG = False
 
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
